@@ -95,3 +95,7 @@ u64_backend = []
 [badges.travis-ci]
 branch = "master"
 repository = "dalek-cryptography/curve25519-dalek"
+
+[lib]
+name = "curve25519_dalek_patched"
+# If src/lib.rs is present, we don't need to specify a path.
