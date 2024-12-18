@@ -1,3 +1,6 @@
 // src/lib.rs
-// This is the library entry point.
-// Add your library code here.
+#![no_std]
+
+pub fn curve_test_function() -> u32 {
+    42
+}
