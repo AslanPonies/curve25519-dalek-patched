@@ -1,45 +1,52 @@
 #![no_std]
 
-// Stub module for curve constants.
-pub mod constants {
-    // You can later add constants (e.g. curve parameters) here.
-    // For now, this module is empty.
+// A simple test function (your original stub)
+pub fn curve_test_function() -> u32 {
+    42
 }
 
-// Stub module for Edwards curve related types.
+/// Stub implementation of the `digest` module as expected by ed25519-dalek.
+pub mod digest {
+    /// A dummy Digest trait.
+    pub trait Digest {}
+
+    /// Stub for generic_array and its typenum.
+    pub mod generic_array {
+        pub mod typenum {
+            /// A dummy type representing U64.
+            #[derive(Debug, Clone, Copy)]
+            pub struct U64;
+        }
+    }
+}
+
+/// Stub module for constants.
+pub mod constants {
+    // If ed25519-dalek expects any constants here, you can add them.
+    // For now we leave it empty.
+}
+
+/// Stub module for Edwards curve types.
 pub mod edwards {
-    /// A stub for a compressed Edwards curve point.
+    /// A dummy compressed Edwards curve point.
     #[derive(Debug, Clone, Copy)]
     pub struct CompressedEdwardsY;
-    
-    /// A stub for an Edwards curve point.
+
+    /// A dummy Edwards curve point.
     #[derive(Debug, Clone, Copy)]
     pub struct EdwardsPoint;
 }
 
-// Stub module for scalar arithmetic.
+/// Stub module for scalar arithmetic.
 pub mod scalar {
-    /// A stub scalar type.
+    /// A dummy scalar type.
     #[derive(Debug, Clone, Copy)]
     pub struct Scalar;
 }
 
-// Create a module to re-export the `Digest` trait and associated items
-// from the external `digest` crate. This allows ed25519-dalek to resolve its imports.
-pub mod digest {
-    // Re-export the Digest trait from the `digest` crate.
-    pub use digest::Digest;
-    
-    // Provide a nested module for generic array types that ed25519-dalek might need.
-    pub mod generic_array {
-        pub use generic_array::typenum;
-    }
-}
-
-// Re-export U64 from generic_array's typenum so that ed25519-dalek can use it.
-pub use generic_array::typenum::U64;
-
-// A simple test function.
-pub fn curve_test_function() -> u32 {
-    42
-}
+// Re-export items so that ed25519-dalek finds them in the expected locations.
+pub use digest::Digest;
+pub use digest::generic_array::typenum::U64;
+pub use constants::*;
+pub use edwards::{CompressedEdwardsY, EdwardsPoint};
+pub use scalar::Scalar;
