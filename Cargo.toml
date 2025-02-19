@@ -97,5 +97,5 @@ branch = "master"
 repository = "dalek-cryptography/curve25519-dalek"
 
 [lib]
-name = "curve25519_dalek-patched"
+name = "curve25519_dalek"
 # If src/lib.rs is present, we don't need to specify a path.
